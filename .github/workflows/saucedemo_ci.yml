@@ -21,3 +21,6 @@ jobs:
 
       - name: Instalar Cypress
         run: npm install cypress --save-dev
+
+      - name: Iniciar o Cypress
+        run: npx cypress run
