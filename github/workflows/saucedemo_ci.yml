@@ -1,0 +1,23 @@
+name: SauceDemo - Cypress CI
+
+on:
+  push:
+    branches: [testes]
+  pull_request:
+    branches: [testes]
+
+jobs:
+  run-newman-tests:
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v3
+
+      - name: Instalar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Instalar Cypress
+        run: npm install cypress --save-dev
