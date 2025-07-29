@@ -25,5 +25,5 @@ jobs:
       - name: Instalar dependências do projeto
         run: npm ci
 
-      - name: Verificar instalação do Cypress
-        run: npx cypress verify
+      - name: Executar testes de login
+        run: npx cypress run "login.cy.js" "cypress/e2e/login.cy.js"
