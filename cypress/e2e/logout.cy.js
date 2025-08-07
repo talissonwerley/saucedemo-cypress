@@ -8,6 +8,7 @@ describe('Logout', () => {
       cy.get('[data-test="password"]').type(user.password)
       cy.get('#login-button').click()
       cy.url().should('include', '/inventory.html')
+      cy.screenshot('login-success')
     })
   })
 
@@ -16,5 +17,6 @@ describe('Logout', () => {
     cy.get('.bm-menu').should('be.visible')
     cy.get('#logout_sidebar_link').should('be.visible').click()
     cy.url().should('eq', 'https://www.saucedemo.com/')
+    cy.screenshot('logout-success')
   })
 })

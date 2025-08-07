@@ -10,6 +10,7 @@ describe('Login', () => {
       cy.get('[data-test="username"]').type(user.username)
       cy.get('[data-test="password"]').type(user.password)
       cy.get('#login-button').click()
+      cy.screenshot('login com sucesso')
       cy.url().should('include', '/inventory.html')
     })
   })
@@ -25,6 +26,7 @@ describe('Login', () => {
         'contain.text',
         'Username and password do not match any user'
       )
+      cy.screenshot('login com falha')
     })
   })
   it('Não deve fazer login com usiuario bloqueado', () => {
@@ -39,6 +41,7 @@ describe('Login', () => {
         'contain.text',
         'Epic sadface: Sorry, this user has been locked out.'
       )
+      cy.screenshot('login bloqueado')
     })
   })
 })

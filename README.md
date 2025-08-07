@@ -1,16 +1,18 @@
-# 🧪 Testes Automatizados com Cypress - SauceDemo
+# Testes Automatizados com Cypress - SauceDemo
 
 Este projeto contém uma automação de testes end-to-end para o site [SauceDemo](https://www.saucedemo.com), uma plataforma de vendas utilizada com fins educacionais e de prática de testes de software.
 
 ## 📚 Objetivo
 
-Este repositório faz parte do meu estudo sobre **Qualidade de Software (QA)**, com foco em testes automatizados utilizando **JavaScript**, **Node.js** e o framework **Cypress**.
+Este repositório faz parte do meu estudo sobre **Qualidade de Software (QA)**, com foco em testes automatizados utilizando **JavaScript**, **Node.js**, **Cypress** e o **Github Actions**.
 
 ## 🚀 Tecnologias e Ferramentas
 
-- [Node.js](https://nodejs.org/)
-- [Cypress](https://www.cypress.io/)
-- [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+- [Node.js](https://nodejs.org/) (v22.16.0)
+- [Cypress](https://www.cypress.io/) (v14.5.3)
+- [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) (ES6)
+- [Mochawesome Reporter](https://github.com/adamgruber/mochawesome) (v4.0.0)
+- [Mocha JUnit Reporter](https://github.com/michaelleeallen/mocha-junit-reporter) (v2.2.1)
 
 ## 📁 Estrutura do Projeto
 
@@ -31,7 +33,13 @@ saucedemo_cypress/
 │   │   └── visual_checkout_flow.cy.js
 │   ├── fixtures/
 │   │   └── example.json
-│   └── support/
+│   ├── reports
+│   │   └── html
+│   │   │    └── index.html
+│   │   └── junit
+│   ├──screenshots
+│   │
+│   ├──support/
 │       ├── commands.js
 │       └── e2e.js
 ├── cypress.config.js
@@ -44,21 +52,35 @@ saucedemo_cypress/
 
 1. **Clone o repositório:**
 
-git clone https://github.com/seu-usuario/saucedemo_cypress.git
+`git clone https://github.com/seu-usuario/saucedemo_cypress.git`
 
-cd saucedemo_cypress
+`cd saucedemo_cypress`
 
 2. **Instale as dependências:**
 
-npm install cypress
+`npm install cypress`
 
 3. **Executar com a interface gráfica:**
 
-npx cypress open
+`npx cypress open`
 
 4. **Executar em modo headless:**
 
-npx cypress run
+`npx cypress run`
+
+## 📊 Geração de Relatórios
+
+O projeto está configurado para gerar relatórios nos formatos:
+
+- HTML (Mochawesome)
+
+- JUnit XML (para integração com CI/CD)
+
+Os relatórios são gerados automaticamente na pasta:
+
+```
+cypress/reports/
+```
 
 ## 🧠 Testes Implementados
 
@@ -78,8 +100,4 @@ npx cypress run
 
 - Responsividade da aplicação
 
-## 📌 Notas
-
-- Este projeto foi desenvolvido com fins de aprendizado e prática pessoal.
-
-- Todos os testes foram escritos por Talisson Werley.
+- Screenshots automáticos em falhas

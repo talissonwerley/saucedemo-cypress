@@ -1,0 +1,15 @@
+{
+  "reporterEnabled": "cypress-mochawesome-reporter, mocha-junit-reporter",
+  "cypressMochawesomeReporterReporterOptions": {
+    "reportDir": "cypress/reports/html",
+    "charts": true,
+    "reportPageTitle": "Meus Testes Cypress",
+    "embeddedScreenshots": true,
+    "inlineAssets": true,
+    "saveJson": false
+  },
+  "mochaJunitReporterReporterOptions": {
+    "mochaFile": "cypress/reports/junit/results-[hash].xml",
+    "includePending": true
+  }
+}

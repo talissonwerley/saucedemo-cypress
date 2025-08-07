@@ -2,25 +2,17 @@ describe('Fluxo visual de checkout - Saucedemo', () => {
   before(() => {
     // 1. Visita a página com verificação explícita
     cy.visit('https://www.saucedemo.com', {
-      timeout: 15000, // Aumenta timeout para carregamento
-      failOnStatusCode: false, // Ignora erros HTTP
+      timeout: 15000,
+      failOnStatusCode: false,
     })
 
-    // 2. Verifica se estamos na página correta
-    cy.document().should(($doc) => {
-      // Verifica se é a página de login pelo título
-      const title = $doc.title.toLowerCase()
-      expect(title).to.include('swag labs')
-    })
+    // 2. Verifica se estamos na página correta (modificado)
+    cy.document().its('title').should('include', 'Swag Labs')
 
-    // 3. Verificação alternativa do container de login
-    cy.get('body').then(($body) => {
-      if ($body.find('#login_button_container').length === 0) {
-        // Debug: tira print se não encontrar o elemento
-        cy.screenshot('login-page-missing-element')
-        throw new Error('Página de login não carregou corretamente')
-      }
-    })
+    // 3. Verificação alternativa do container de login (modificado)
+    cy.get('#login_button_container')
+      .should('exist')
+      .then(() => {})
 
     // 4. Preenche login com seletores alternativos
     cy.fixture('example').then((data) => {
@@ -35,6 +27,8 @@ describe('Fluxo visual de checkout - Saucedemo', () => {
         .type(user.password, { delay: 30 })
     })
 
+    cy.screenshot('login-credentials-filled')
+
     cy.get('.btn_action, [data-test=login-button]').click()
 
     // 5. Verifica redirecionamento pós-login
@@ -47,5 +41,6 @@ describe('Fluxo visual de checkout - Saucedemo', () => {
       expect($items).to.have.length.greaterThan(0)
       expect($items.first()).to.be.visible
     })
+    cy.screenshot('inventory-items-loaded')
   })
 })

@@ -31,6 +31,7 @@ describe('Fluxo de Compra Completo', () => {
     // Prossegue para checkout
     cy.get('[data-test="checkout"]').click()
     cy.url().should('include', '/checkout-step-one.html')
+    cy.screenshot('checkout-step-one-carrinho-com-produto-adicionado')
 
     // Preenche os dados do cliente
     cy.get('[data-test="firstName"]').type('Maria')
@@ -52,5 +53,6 @@ describe('Fluxo de Compra Completo', () => {
     // Verifica mensagem de sucesso
     cy.get('.complete-header').should('have.text', 'Thank you for your order!')
     cy.get('.complete-text').should('contain', 'Your order has been dispatched')
+    cy.screenshot('checkout-complete-pedido-finalizado-comsucesso')
   })
 })

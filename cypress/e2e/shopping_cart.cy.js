@@ -20,6 +20,7 @@ describe('Carrinho de compras', () => {
     cy.get('.shopping_cart_badge').should('be.visible').and('contain.text', '1')
     cy.get('.shopping_cart_link').click()
     cy.contains('Sauce Labs Backpack').should('be.visible')
+    cy.screenshot('produto-adicionado-carrinho')
   })
 
   it('Deve remover produto do carrinho', () => {
@@ -29,6 +30,7 @@ describe('Carrinho de compras', () => {
       .find('.btn_inventory')
       .click()
     cy.get('.shopping_cart_link').click()
+    cy.screenshot('produto-adicionado-carrinho-para-remocao')
 
     // Remove o item
     cy.contains('.cart_item', 'Sauce Labs Backpack')
@@ -38,5 +40,6 @@ describe('Carrinho de compras', () => {
     // Valida remoção
     cy.get('.shopping_cart_badge').should('not.exist')
     cy.get('.cart_item').should('not.exist')
+    cy.screenshot('produto-removido-carrinho')
   })
 })

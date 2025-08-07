@@ -28,6 +28,7 @@ describe('Carrinho de Compras - Múltiplos Produtos e Checkout', () => {
 
     // Verifica se há 3 itens listados no carrinho
     cy.get('.cart_item').should('have.length', 3)
+    cy.screenshot('Carrinho-com-3-itens')
   })
 
   it('Verificar total de valores no checkout', () => {
@@ -41,6 +42,7 @@ describe('Carrinho de Compras - Múltiplos Produtos e Checkout', () => {
           .then(($price) => {
             const valor = parseFloat($price.text().replace('$', ''))
             produtosSelecionados.push(valor)
+            cy.screenshot('Produto-adicionado-ao-carrinho-' + (index + 1))
           })
 
         cy.wrap($el).find('.btn_inventory').click()
@@ -65,7 +67,7 @@ describe('Carrinho de Compras - Múltiplos Produtos e Checkout', () => {
       const subtotalNaTela = parseFloat(
         subtotalTexto.replace('Item total: $', '')
       )
-
+      cy.screenshot('Subtotal-no-checkout')
       const subtotalEsperado = produtosSelecionados.reduce(
         (total, valor) => total + valor,
         0

@@ -34,5 +34,6 @@ describe('Usuário problem_user', () => {
         // Se todos os nomes forem iguais, esse set terá apenas um item
         expect(nomesProdutos.size).to.be.greaterThan(1)
       })
+    cy.screenshot('problem_user - inventário carregado produtos distintos')
   })
 })

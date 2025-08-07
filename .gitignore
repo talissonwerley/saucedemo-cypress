@@ -1,0 +1,58 @@
+# =============================================
+# ARQUIVOS DO CYPRESS (GERADOS AUTOMATICAMENTE)
+# =============================================
+cypress/screenshots/  # Capturas de tela das execuções
+cypress/videos/       # Gravações de vídeo dos testes
+cypress/reports/      # Relatórios gerados (HTML, JUnit)
+cypress/downloads/    # Arquivos baixados durante testes
+
+# ==============================
+# DEPENDÊNCIAS E CONFIGURAÇÕES
+# ==============================
+node_modules/         # Dependências do Node.js
+.env                  # Variáveis de ambiente
+.env.local            # Variáveis locais
+.env.*                # Outros arquivos de ambiente
+*.env                 # Qualquer arquivo .env
+
+# ======================
+# SISTEMA E IDE
+# ======================
+.DS_Store             # Arquivo de metadados do macOS
+Thumbs.db             # Arquivo de miniaturas do Windows
+.idea/                # Configurações do JetBrains IDE
+.vscode/              # Configurações do VS Code
+*.swp                 # Arquivos temporários do Vim
+*.swo                 # Arquivos temporários do Vim
+
+# ======================
+# LOGS E TEMPORÁRIOS
+# ======================
+*.log                 # Arquivos de log
+npm-debug.log*        # Logs de debug do npm
+yarn-debug.log*       # Logs de debug do Yarn
+yarn-error.log*       # Erros do Yarn
+tmp/                  # Pasta temporária
+temp/                 # Pasta temporária alternativa
+
+# ======================
+# SISTEMA OPERACIONAL
+# ======================
+# Windows
+ehthumbs.db
+Desktop.ini
+
+# macOS
+._*
+.Spotlight-V100
+.Trashes
+
+# ======================
+# OUTROS
+# ======================
+dist/                 # Pasta de builds (se aplicável)
+coverage/             # Relatórios de cobertura de testes
+.nyc_output/          # Saída do Istanbul (cobertura)
+*.bak                 # Arquivos de backup
+*.tmp                 # Arquivos temporários
+node_modules

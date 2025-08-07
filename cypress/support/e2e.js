@@ -15,6 +15,7 @@
 
 // Import commands.js using ES2015 syntax:
 import './commands'
+import 'cypress-mochawesome-reporter/register'
 
 // Ignora erros específicos do backtrace.io
 Cypress.on('uncaught:exception', (err) => {

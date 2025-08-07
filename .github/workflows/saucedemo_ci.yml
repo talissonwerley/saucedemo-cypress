@@ -7,23 +7,53 @@ on:
     branches: [testes]
 
 jobs:
-  run-newman-tests:
+  cypress-tests:
     runs-on: ubuntu-24.04
+    timeout-minutes: 30
 
     steps:
       - name: Checkout do código
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: Instalar Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22.16.0'
+          cache: 'npm'
 
-      - name: Instalar Cypress
-        run: npm install cypress --save-dev
-
-      - name: Instalar dependências do projeto
+      - name: Instalar dependências
         run: npm ci
 
-      - name: Executar testes
-        run: npx cypress run "cypress/e2e/"
+      - name: Executar testes Cypress com reporters
+        run: |
+          npx cypress run --browser chrome --headless \
+            --reporter cypress-multi-reporters \
+            --reporter-options "configFile=reporter-config.json"
+
+      - name: Publicar relatório Mochawesome
+        uses: actions/upload-artifact@v4
+        with:
+          name: cypress-html-report
+          path: cypress/reports/html/index.html
+          if-no-files-found: warn
+
+      - name: Publicar relatório JUnit
+        uses: actions/upload-artifact@v4
+        with:
+          name: junit-report
+          path: cypress/reports/junit/*.xml
+          if-no-files-found: warn
+
+      - name: Publicar screenshots (apenas em falhas)
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cypress-screenshots
+          path: cypress/screenshots
+
+      - name: Publicar vídeos (apenas em falhas)
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cypress-videos
+          path: cypress/videos

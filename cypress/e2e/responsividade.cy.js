@@ -20,6 +20,7 @@ describe('Responsividade do site', () => {
         // Verifica se os produtos são exibidos corretamente
         cy.get('.inventory_item').should('have.length.greaterThan', 0)
         cy.get('.shopping_cart_link').should('be.visible')
+        cy.screenshot(`responsividade-${viewport.device}`)
       })
     })
   })
