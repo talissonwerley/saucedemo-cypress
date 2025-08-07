@@ -66,7 +66,9 @@ saucedemo_cypress/
 
 4. **Executar em modo headless:**
 
-`npx cypress run`
+```
+npx cypress run --browser chrome --headless --reporter cypress-multi-reporters --reporter-options "configFile=cypress/reporter-config.json"
+```
 
 ## 📊 Geração de Relatórios
 
